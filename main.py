@@ -158,7 +158,7 @@ class Shield(pygame.sprite.Sprite):
         if self.health <= 0:
             self.kill()
 
-# alien
+# Enemy
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
