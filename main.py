@@ -65,10 +65,10 @@ def draw_text(text, font, text_col, x, y):
     screen.blit(img, (x, y))
 
 # spaceship class
-class Spaceship(pygame.sprite.Sprite):
+class User(pygame.sprite.Sprite):
     def __init__(self, x, y, health):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("img/spaceship.png")
+        self.image = pygame.image.load("img/user.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
         self.startingHealth = health
@@ -159,10 +159,10 @@ class Shield(pygame.sprite.Sprite):
             self.kill()
 
 # alien
-class Aliens(pygame.sprite.Sprite):
+class Enemy(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("img/alien" + str(random.randint(1, 5)) + ".png")
+        self.image = pygame.image.load("img/enemy" + str(random.randint(1, 5)) + ".png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
         self.move_counter = 0
@@ -181,7 +181,7 @@ class Aliens(pygame.sprite.Sprite):
 class Alien_Bullets(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("img/alien_bullet.png")
+        self.image = pygame.image.load("img/bullet.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
 
