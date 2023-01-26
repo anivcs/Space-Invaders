@@ -32,8 +32,8 @@ fontBig = pygame.font.SysFont('Constantia', 40)
 explosion1 = pygame.mixer.Sound("img/explosion.wav")
 explosion1.set_volume(0.25)
 
-explosion2 = pygame.mixer.Sound("img/explosion2.wav")
-explosion2.set_volume(0.25)
+background = pygame.mixer.Sound("img/background.wav")
+background.set_volume(0.25)
 
 laser = pygame.mixer.Sound("img/laser.wav")
 laser.set_volume(0.25)
@@ -54,7 +54,7 @@ green = (0, 255, 0)
 white = (255, 255, 255)
 
 # loading image
-bg = pygame.image.load("img/bg.png")
+bg = pygame.image.load("img/background.png")
 
 def draw_bg():
     screen.blit(bg, (0, 0))
