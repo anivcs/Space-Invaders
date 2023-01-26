@@ -29,13 +29,13 @@ fontBig = pygame.font.SysFont('Constantia', 40)
 
 
 # sounds
-explosion1 = pygame.mixer.Sound("img/explosion.wav")
+explosion1 = pygame.mixer.Sound("explosion.wav")
 explosion1.set_volume(0.25)
 
-background = pygame.mixer.Sound("img/background.wav")
+background = pygame.mixer.Sound("background.wav")
 background.set_volume(0.25)
 
-laser = pygame.mixer.Sound("img/laser.wav")
+laser = pygame.mixer.Sound("laser.wav")
 laser.set_volume(0.25)
 
 
@@ -54,7 +54,7 @@ green = (0, 255, 0)
 white = (255, 255, 255)
 
 # loading image
-bg = pygame.image.load("img/background.png")
+bg = pygame.image.load("background.png")
 
 def draw_bg():
     screen.blit(bg, (0, 0))
@@ -65,10 +65,10 @@ def draw_text(text, font, text_col, x, y):
     screen.blit(img, (x, y))
 
 # spaceship class
-class User(pygame.sprite.Sprite):
+class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, health):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("img/user.png")
+        self.image = pygame.image.load("player.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
         self.startingHealth = health
@@ -120,7 +120,7 @@ class User(pygame.sprite.Sprite):
 class Bullets(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("img/bullet.png")
+        self.image = pygame.image.load("bullet.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
 
@@ -162,7 +162,7 @@ class Shield(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("img/enemy" + str(random.randint(1, 5)) + ".png")
+        self.image = pygame.image.load("enemy.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
         self.move_counter = 0
@@ -181,7 +181,7 @@ class Enemy(pygame.sprite.Sprite):
 class Alien_Bullets(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("img/bullet.png")
+        self.image = pygame.image.load("bullet.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
 
@@ -204,7 +204,7 @@ class Explosion(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.images = []
         for num in range(1, 6):
-            img = pygame.image.load(f"img/exp{num}.png")
+            img = pygame.image.load(f"explosion.png")
             if size == 1:
                 img = pygame.transform.scale(img, (20, 20))
             if size == 2:
@@ -252,14 +252,14 @@ def create_aliens():
     # generate aliens
     for row in range(rows):
         for item in range(columns):
-            alien = Aliens(100 + item * 100, 100 + row * 70)
+            alien = Enemy(100 + item * 100, 100 + row * 70)
             alienGroup.add(alien)
 
 create_aliens()
 create_shields()
 
 # player creation
-spaceship = Spaceship(int(screenWidth / 2), screenHeight - 100, 3)
+spaceship = Player(int(screenWidth / 2), screenHeight - 100, 3)
 spaceshipGroup.add(spaceship)
 
 run = True
